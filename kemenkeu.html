@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEMENKEU - BEST Kabinet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@700&family=Quintessential&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #FFF8F0 0%, #FFECD2 50%, #FFF5E6 100%); overflow-x: hidden; }
+    
+    /* NAVIGATION STYLE */
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; display: flex; padding: 20px 40px; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); }
+    nav img { width: 70px; }
+    .nav-links { flex: 1; text-align: right; }
+    .nav-links ul { display: flex; justify-content: flex-end; align-items: center; }
+    .nav-links ul li { list-style: none; padding: 8px 12px; position: relative; }
+    
+    /* Tombol Navigasi */
+    .nav-links ul li a { 
+        color: #fff; 
+        text-decoration: none; 
+        font-size: 16px; 
+        font-weight: 500; 
+        transition: 0.3s;
+        position: relative;
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+
+    /* EFEK ANIMASI MUNCUL DARI TENGAH */
+    .nav-links ul li a::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #F4870B;
+        position: absolute;
+        bottom: 0;
+        left: 50%; /* Mulai dari tengah */
+        transform: translateX(-50%); /* Geser agar tetap di tengah saat melebar */
+        transition: 0.4s ease-in-out;
+        border-radius: 2px;
+    }
+
+    /* Saat Hover: Melebar dari tengah */
+    .nav-links ul li a:hover::after {
+        width: 100%;
+    }
+
+    /* Kelas Active (Saat diklik) */
+    .nav-links ul li a.active::after {
+        width: 100%;
+    }
+
+    nav .fa { display: none; color: #fff; font-size: 22px; cursor: pointer; }
+
+    @media(max-width: 700px) {
+      .nav-links { position: absolute; background: #673E0E; height: 100vh; width: 200px; top: 0; right: -200px; transition: 0.5s; text-align: left; }
+      .nav-links ul { display: block; padding: 30px; }
+      .nav-links ul li { margin-bottom: 20px; }
+      nav .fa { display: block; }
+      nav img { width: 40px; }
+    }
+
+    /* HERO SECTION */
+    .hero-section { min-height: 100vh; padding-top: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+    .ministry-badge { display: flex; align-items: center; gap: 8px; background: linear-gradient(to right, #FF8C00, #FFD700); color: white; padding: 8px 25px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .main-title h1 { font-family: 'Cinzel', serif; font-size: 52px; color: #7c3e0f; letter-spacing: 8px; text-align: center; line-height: 1.2; }
+    .subtitle { font-family: 'Quintessential', serif; font-size: 22px; color: #8b5e34; font-style: italic; margin-bottom: 30px; }
+
+    /* INFO BADGES */
+    .info-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; margin-bottom: 40px; }
+    .info-box { background: white; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(139, 94, 52, 0.1); border: 2px solid transparent; min-width: 180px; transition: 0.3s; }
+    .info-box i { font-size: 20px; }
+    .info-box span { font-weight: 600; color: #5a3d2b; font-size: 15px; }
+    .box-orange { border-color: #F4870B; }
+    .box-orange i { color: #F4870B; }
+    .box-yellow { border-color: #FFD700; }
+    .box-yellow i { color: #FFD700; }
+    .box-brown { border-color: #7c3e0f; }
+    .box-brown i { color: #7c3e0f; }
+
+    /* PHOTO CONTAINER */
+    .photo-container { position: relative; max-width: 700px; width: 90%; margin: 0 auto 20px; z-index: 2; }
+    .polaroid-frame { background: white; padding: 20px 20px 60px 20px; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); position: relative; }
+    .polaroid-frame img { width: 100%; border-radius: 12px; }
+    .polaroid-caption { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-family: 'Quintessential', serif; font-size: 18px; color: #5a3d2b; }
+
+    /* DECORATIONS */
+    .tape { position: absolute; width: 100px; height: 30px; top: -15px; left: 50%; transform: translateX(-50%); z-index: 10; opacity: 0.8; }
+    .tape.orange { background: #F4870B; }
+    .tape.pink { background: #FFB6C1; }
+    .tape.blue { background: #87CEEB; }
+    .sticker { position: absolute; z-index: 15; font-size: 1.5rem; filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1)); }
+    .st-1 { top: -10px; right: -10px; }
+    .st-2 { bottom: 10px; left: -10px; }
+
+    /* LEADERS & MEMBERS */
+    .section-title { text-align: center; margin: 60px 0 40px; }
+    .section-title h2 { font-family: 'Cinzel', serif; font-size: 36px; color: #7c3e0f; }
+    .leaders-container, .members-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .member-card { width: 280px; position: relative; }
+    .member-polaroid { background: white; padding: 15px 15px 20px 15px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; text-align: center; }
+    .member-polaroid img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+    .leader-info { padding: 10px 0; }
+    .leader-name { display: block; font-weight: 700; font-size: 18px; color: #333; margin-bottom: 5px; }
+    .leader-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; color: white; text-transform: uppercase; }
+    .badge-menteri { background: linear-gradient(to right, #FF8C00, #FFD700); }
+    .badge-sekmen { background: #999; }
+    .member-caption-simple { margin-top: 15px; font-size: 14px; font-weight: 600; color: #5a3d2b; font-family: 'Quintessential', serif; }
+
+    @media (max-width: 768px) {
+      .main-title h1 { font-size: 38px; letter-spacing: 4px; }
+      .subtitle { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html#home"><img src="fotofoto/logo-best.png"></a>
+    <div class="nav-links" id="navLinks">
+      <i class="fa fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="index.html#home" onclick="hideMenu()">HOME</a></li>
+        <li><a href="index.html#about" onclick="hideMenu()">ABOUT US</a></li>
+        <li><a href="index.html#kementerian" onclick="hideMenu()">KEMENTERIAN</a></li>
+        <li><a href="index.html#event" onclick="hideMenu()">EVENT</a></li>
+        <li><a href="index.html#contact" onclick="hideMenu()">CONTACT</a></li>
+    </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </nav>
+
+  <section class="hero-section" id="home">
+    <div class="ministry-badge" data-aos="fade-down">
+      <i class="fas fa-crown"></i>
+      <span>Kementerian</span>
+    </div>
+
+    <div class="main-title" data-aos="zoom-in">
+      <h1>KEMENKEU</h1>
+    </div>
+    <p class="subtitle" data-aos="fade-up">Kementerian Keuangan</p>
+
+    <div class="photo-container" data-aos="fade-up">
+      <div class="polaroid-frame">
+        <div class="tape orange"></div>
+        <div class="sticker st-1">✨</div>
+        <img src="fotofoto/keu-foto-rame.jpeg" alt="Kemenkeu Foto Rame">
+        <div class="polaroid-caption">Keluarga Besar Kemenkeu ✨</div>
+      </div>
+    </div>
+
+    <div class="info-container" data-aos="fade-up">
+      <div class="info-box box-orange">
+        <i class="fas fa-users"></i>
+        <span>9 Anggota</span>
+      </div>
+      <div class="info-box box-yellow">
+        <i class="fas fa-calendar-alt"></i>
+        <span>2025/2026</span>
+      </div>
+      <div class="info-box box-brown">
+        <i class="fas fa-star-creative"></i>
+        <span>Solid Team</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title" id="about" data-aos="fade-up">
+    <h2>PEMIMPIN</h2>
+  </div>
+
+  <section class="leaders-container">
+    <div class="member-card" data-aos="fade-up">
+      <div class="member-polaroid">
+        <div class="sticker st-1">👑</div>
+        <img src="fotofoto/menteri-keu.jpeg" alt="Menteri">
+        <div class="leader-info">
+            <span class="leader-name">Sayyidina Primazahra</span>
+            <span class="leader-badge badge-menteri">Menteri Keuangan</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="fade-up">
+      <div class="member-polaroid">
+        <div class="sticker st-1">📝</div>
+        <img src="fotofoto/sekmen-keu.jpeg" alt="Sekmen">
+        <div class="leader-info">
+            <span class="leader-name">Syakira Emha Az-Zahra</span>
+            <span class="leader-badge badge-sekmen">Sekretaris Menteri</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title" id="kementerian" data-aos="fade-up">
+    <h2>ANGGOTA</h2>
+  </div>
+
+  <section class="members-grid">
+    <div class="member-card" data-aos="zoom-in">
+      <div class="member-polaroid">
+        <div class="tape pink"></div>
+        <div class="sticker st-2">⭐</div>
+        <img src="fotofoto/anggota-keu-akh.jpeg" alt="Anggota">
+        <p class="member-caption-simple">Anggota Kemenkeu</p>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="zoom-in">
+      <div class="member-polaroid">
+        <div class="tape blue"></div>
+        <div class="sticker st-2">🔹</div>
+        <img src="fotofoto/anggota-keu-ikh1.jpeg" alt="Anggota">
+        <p class="member-caption-simple">Anggota Kemenkeu</p>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="zoom-in">
+      <div class="member-polaroid">
+        <div class="tape blue"></div>
+        <div class="sticker st-2">🔹</div>
+        <img src="fotofoto/anggota-keu-ikh2.jpeg" alt="Anggota">
+        <p class="member-caption-simple">Anggota Kemenkeu</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() { navLinks.style.right = "0"; }
+    function hideMenu() { navLinks.style.right = "-200px"; }
+
+    // Logic Animasi Klik Navigasi (Aktifkan garis bawah)
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+            if(window.innerWidth <= 700) hideMenu();
+        });
+    });
+  </script>
+</body>
+</html>

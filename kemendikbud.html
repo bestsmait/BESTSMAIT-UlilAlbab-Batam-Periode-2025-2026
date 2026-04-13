@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEMENDIKBUD - BEST Kabinet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@700&family=Quintessential&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* CSS internal sesuai template baru */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #FFF8F0 0%, #FFECD2 50%, #FFF5E6 100%); overflow-x: hidden; }
+    
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; display: flex; padding: 20px 40px; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); }
+    nav img { width: 70px; }
+    .nav-links { flex: 1; text-align: right; }
+    .nav-links ul { display: flex; justify-content: flex-end; align-items: center; }
+    .nav-links ul li { list-style: none; padding: 8px 12px; }
+    .nav-links ul li a { color: #fff; text-decoration: none; font-size: 16px; font-weight: 500; }
+    .nav-links ul li:hover::after { width: 100%; }
+    .nav-links ul li::after { content: ''; display: block; width: 0%; height: 2px; background: #F4870B; margin: auto; transition: 0.5s; }
+    nav .fa { display: none; color: #fff; font-size: 22px; cursor: pointer; }
+
+    @media(max-width: 700px) {
+      .nav-links { position: absolute; background: #673E0E; height: 100vh; width: 200px; top: 0; right: -200px; transition: 0.5s; text-align: left; }
+      .nav-links ul { display: block; padding: 30px; }
+      nav .fa { display: block; }
+      nav img { width: 40px; }
+    }
+
+    .hero-section { min-height: 100vh; padding-top: 100px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    
+    .ministry-badge { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #F4870B, #FFD700); color: white; padding: 12px 30px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(244, 135, 11, 0.3); z-index: 2; }
+    .main-title h1 { font-family: 'Cinzel', serif; font-size: 52px; color: #7c3e0f; letter-spacing: 8px; text-align: center; }
+    .subtitle { font-family: 'Quintessential', serif; font-size: 22px; color: #8b5e34; font-style: italic; margin-bottom: 40px; }
+
+    .photo-container { position: relative; max-width: 700px; width: 90%; margin: 0 auto 60px; z-index: 2; }
+    .polaroid-frame { background: white; padding: 20px 20px 60px 20px; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); transform: rotate(-2deg); transition: 0.4s; position: relative; }
+    .polaroid-frame:hover { transform: rotate(0deg) scale(1.02); }
+    .tape { position: absolute; width: 100px; height: 30px; background: rgba(244, 135, 11, 0.6); top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg); z-index: 10; }
+    .polaroid-frame img { width: 100%; border-radius: 12px; }
+    .polaroid-caption { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-family: 'Quintessential', serif; font-size: 18px; color: #5a3d2b; }
+
+    .section-title { text-align: center; margin: 60px 0 40px; z-index: 2; }
+    .section-title h2 { font-family: 'Cinzel', serif; font-size: 36px; color: #7c3e0f; position: relative; padding: 0 30px; }
+
+    .leaders-container { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
+    .leader-inner { background: white; border-radius: 30px; padding: 25px; text-align: center; box-shadow: 0 20px 50px rgba(139, 94, 52, 0.15); border: 4px solid #FFD700; transition: 0.4s; }
+    .leader-photo-frame { width: 200px; height: 200px; margin: 20px auto; border-radius: 50%; overflow: hidden; border: 5px solid #FFD700; }
+    .leader-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .role { display: inline-block; background: linear-gradient(135deg, #F4870B, #FFD700); color: white; padding: 8px 20px; border-radius: 25px; font-size: 12px; font-weight: 600; }
+
+    .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .member-polaroid { background: white; padding: 15px 15px 45px 15px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; transition: 0.3s; }
+    .member-polaroid img { width: 100%; border-radius: 10px; }
+    .member-caption { position: absolute; bottom: 15px; left: 0; right: 0; text-align: center; font-size: 14px; font-weight: 600; color: #5a3d2b; }
+    
+    .footer-quote { text-align: center; padding: 60px 20px; }
+    .quote-bubble { display: inline-block; background: white; padding: 30px 50px; border-radius: 30px; border: 3px solid #F4870B; box-shadow: 0 15px 40px rgba(139, 94, 52, 0.15); }
+
+    @media (max-width: 768px) {
+      .hero-section { padding-top: 120px; min-height: auto; }
+      .main-title h1 { font-size: 42px; letter-spacing: 2px; margin: 15px 0 5px; line-height: 1; }
+      .subtitle { font-size: 18px; margin-bottom: 30px; padding: 0 10px; }
+      .ministry-badge { padding: 10px 25px; font-size: 11px; margin-bottom: 10px; transform: scale(0.9); }
+      .photo-container { width: 92%; margin-top: 10px; }
+      .polaroid-frame { padding: 12px 12px 45px 12px; }
+    }
+
+    .sticker { position: absolute; z-index: 15; pointer-events: none; filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1)); }
+    .sticker-top-right { top: -10px; right: -15px; font-size: 1.5rem; }
+    .sticker-bottom-left { bottom: 10px; left: -15px; font-size: 1.8rem; }
+    .sticker-bottom-right { bottom: 5px; right: -10px; font-size: 1.5rem; }
+    .tape.pink { background: rgba(255, 182, 193, 0.8); }
+    .tape.blue { background: rgba(173, 216, 230, 0.8); }
+
+    .member-card { position: relative; padding: 10px; }
+
+    .info-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; margin-bottom: 40px; }
+    .info-box { background: white; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid transparent; min-width: 180px; }
+    .box-orange { border-color: #F4870B; }
+    .box-yellow { border-color: #FFD700; }
+    .box-brown { border-color: #8b5e34; }
+    .info-box span { font-weight: 600; color: #5a3d2b; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html#home"><img src="fotofoto/logo-best.png" alt="Logo BEST"></a>
+    <div class="nav-links" id="navLinks">
+      <i class="fa fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="index.html#home" onclick="hideMenu()">HOME</a></li>
+        <li><a href="index.html#about" onclick="hideMenu()">ABOUT US</a></li>
+        <li><a href="index.html#kementerian" onclick="hideMenu()">KEMENTERIAN</a></li>
+        <li><a href="index.html#event" onclick="hideMenu()">EVENT</a></li>
+        <li><a href="index.html#contact" onclick="hideMenu()">CONTACT</a></li>
+      </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </nav>
+
+  <section class="hero-section">
+    <div class="ministry-badge" data-aos="fade-down">
+      <i class="fas fa-book-open"></i>
+      <span>Kementerian</span>
+    </div>
+
+    <div class="main-title" data-aos="zoom-in">
+      <h1>KEMENDIKBUD</h1>
+    </div>
+    <p class="subtitle" data-aos="fade-up">Kementerian Pendidikan dan Kebudayaan</p>
+
+    <div class="photo-container" data-aos="fade-up">
+      <div class="polaroid-frame">
+        <div class="tape orange"></div>
+        <div class="sticker st-1" style="position: absolute; top: -10px; right: -10px;">🎓</div>
+        <img src="fotofoto/kemendikbud-foto-rame.jpeg" alt="Kemendikbud Foto Rame">
+        <div class="polaroid-caption">Keluarga Besar Kemendikbud ✨</div>
+      </div>
+    </div>
+
+    <div class="info-container" data-aos="fade-up">
+      <div class="info-box box-orange">
+        <i class="fas fa-users"></i>
+        <span>11 Anggota</span>
+      </div>
+      <div class="info-box box-yellow">
+        <i class="fas fa-calendar-alt"></i>
+        <span>2025/2026</span>
+      </div>
+      <div class="info-box box-brown">
+        <i class="fas fa-lightbulb"></i>
+        <span>Creative Team</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>PEMIMPIN</h2>
+  </div>
+
+  <section class="leaders-container">
+    <div class="leader-card" data-aos="fade-right">
+      <div class="leader-inner">
+        <div class="leader-photo-frame">
+          <img src="fotofoto/menteri-dikbud.jpeg" alt="Muhammad Alwan Fatih">
+        </div>
+        <div class="leader-info">
+          <h3>Muhammad Alwan Fatih</h3>
+          <span class="role">Menteri Kemendikbud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="leader-card" data-aos="fade-left">
+      <div class="leader-inner" style="border-color: #C0C0C0;">
+        <div class="leader-photo-frame" style="border-color: #C0C0C0;">
+          <img src="fotofoto/sekmen-dikbud.jpeg" alt="Naura Dzakirah Sudirman">
+        </div>
+        <div class="leader-info">
+          <h3>Naura Dzakirah Sudirman</h3>
+          <span class="role" style="background: linear-gradient(135deg, #808080, #A9A9A9);">Sekretaris Menteri</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>ANGGOTA</h2>
+  </div>
+
+  <section class="members-grid">
+    <div class="member-card" data-aos="zoom-in" style="transform: rotate(-2deg);">
+      <div class="member-polaroid">
+        <div class="tape pink"></div>
+        <div class="sticker sticker-bottom-left">✨</div>
+        <img src="fotofoto/anggota-dikbud-akh1.jpeg" alt="anggota-akh1">
+        <div class="member-caption">Kemendikbud Team</div>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="zoom-in" style="transform: rotate(2deg);">
+      <div class="member-polaroid">
+        <div class="tape blue"></div>
+        <div class="sticker sticker-top-right">⭐</div>
+        <img src="fotofoto/anggota-dikbud-ikh1.jpeg" alt="anggota-ikh1">
+        <div class="member-caption">Kemendikbud Team</div>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="zoom-in" style="transform: rotate(-1.5deg);">
+      <div class="member-polaroid">
+        <div class="tape blue"></div>
+        <div class="sticker sticker-top-right">🎨</div>
+        <img src="fotofoto/anggota-dikbud-ikh2.jpeg" alt="anggota-ikh2">
+        <div class="member-caption">Kemendikbud Team</div>
+      </div>
+    </div>
+
+    <div class="member-card" data-aos="zoom-in" style="transform: rotate(3deg);">
+      <div class="member-polaroid">
+        <div class="tape pink"></div>
+        <div class="sticker sticker-bottom-right">📚</div>
+        <img src="fotofoto/anggota-dikbud-akh2.jpeg" alt="anggota-akh2">
+        <div class="member-caption">Kemendikbud Team</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-quote" data-aos="fade-up">
+    <div class="quote-bubble">
+      <p>"Pendidikan adalah senjata paling ampuh untuk mengubah dunia."</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() { navLinks.style.right = "0"; }
+    function hideMenu() { navLinks.style.right = "-200px"; }
+  </script>
+</body>
+</html>
