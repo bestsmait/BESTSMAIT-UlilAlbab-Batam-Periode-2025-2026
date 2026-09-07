@@ -153,7 +153,7 @@
           </div>
           <div class="stat-item">
             <span class="stat-emoji">👥</span>
-            <span class="stat-number">50+</span>
+            <span class="stat-number">99</span>
             <span class="stat-label">Anggota</span>
           </div>
           <div class="stat-item">
@@ -474,7 +474,7 @@
   <div class="event-cards-wrapper">
     <div class="event-cards-container" id="eventCardsContainer">
       
-      <!-- EVENT CARD 1 - GUMMIES (Tetap di depan) -->
+      <!-- EVENT CARD 1 - GUMMIES -->
       <div class="event-card pink" data-aos="fade-up">
         <div class="event-image">
           <img src="fotofoto/foto-gummies-depn.JPG" alt="GUMMIES">
@@ -489,7 +489,7 @@
         </div>
       </div>
 
-      <!-- EVENT CARD 2 - FANTASTIC (Harus di-swipe) -->
+      <!-- EVENT CARD 2 - FANTASTIC -->
       <div class="event-card purple" data-aos="fade-up" data-aos-delay="100">
         <div class="event-image">
           <img src="fotofoto/supporter1.JPG" alt="FANTASTIC">
@@ -504,11 +504,26 @@
         </div>
       </div>
 
+<!-- EVENT CARD 3 - UA GOES TO SCHOOL -->
+<div class="event-card blue" data-aos="fade-up" data-aos-delay="200">
+  <div class="event-image">
+    <img src="fotofoto/Fotbar.JPG" alt="UA GOES TO SCHOOL">
+  </div>
+
+  <div class="event-content">
+    <div class="event-badge">🏫 School Visit & Outreach</div>
+    <h2>UA GOES TO SCHOOL</h2>
+    <p>Keseruan BEST SMAIT Ulil Albab Batam dalam berkunjung dan bersilaturahmi ke SMPIT Ulil Albab Batam! Klik tombol di bawah ini untuk melihat momen seru dan liputan lengkap acara UAGTS!</p>
+    <a href="uagts-liputan.html" class="event-btn">Read Full Story</a>
+  </div>
+</div>
+
     </div>
 
-    <!-- Swipe Indicator (Mobile Only) -->
+    <!-- Swipe Indicator (Ditambahkan dot ke-3) -->
     <div class="swipe-indicator">
       <span class="swipe-dot active"></span>
+      <span class="swipe-dot"></span>
       <span class="swipe-dot"></span>
     </div>
     
@@ -663,7 +678,6 @@
 
 </section>
 
-
 <!-- JAVASCRIPT NAVBAR -->
 <script>
   var navLinks = document.getElementById("navLinks");
@@ -677,972 +691,14 @@
   }
 </script>
 
-<!-- JAVASCRIPT ABTUS -->
-<script>
-const track = document.querySelector('.slider-track');
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const dotsContainer = document.querySelector('.slider-dots');
-
-let index = 0;
-let startX = 0;
-let isDragging = false;
-
-/* buat dots */
-slides.forEach((_, i) => {
-  const dot = document.createElement('span');
-  if (i === 0) dot.classList.add('active');
-  dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll('.slider-dots span');
-
-function updateSlider() {
-  track.style.transform = `translateX(-${index * 100}%)`;
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[index].classList.add('active');
-}
-
-nextBtn.onclick = () => {
-  index = (index + 1) % slides.length;
-  updateSlider();
-};
-
-prevBtn.onclick = () => {
-  index = (index - 1 + slides.length) % slides.length;
-  updateSlider();
-};
-
-
-/* swipe HP */
-track.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-});
-
-track.addEventListener('touchend', e => {
-  let endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) nextBtn.click();
-  if (endX - startX > 50) prevBtn.click();
-});
-</script>
-
 <!-- AOS Animation -->
-
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
-
-
-  <!-- JAVASCRIPT ABOUT US CHEERFUL - VERSI BARU -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // ==========================================
-  // SLIDER ABOUT US CHEERFUL
-  // ==========================================
-  const slides = document.querySelectorAll('.slide-cheerful');
-  const dots = document.querySelectorAll('.slider-dots-cheerful .dot');
-  const prevBtn = document.querySelector('.slider-btn-cheerful.prev');
-  const nextBtn = document.querySelector('.slider-btn-cheerful.next');
-  
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  
-  // Fungsi untuk menampilkan slide
-  function showSlide(index) {
-    // Reset semua slide
-    slides.forEach((slide) => {
-      slide.classList.remove('active');
-      slide.style.display = 'none';
-    });
-    
-    // Reset semua dots
-    dots.forEach((dot) => {
-      dot.textContent = '⚪';
-      dot.classList.remove('active');
-    });
-    
-    // Aktifkan slide yang dipilih
-    slides[index].classList.add('active');
-    slides[index].style.display = 'block';
-    
-    // Aktifkan dot yang dipilih
-    dots[index].textContent = '🟤';
-    dots[index].classList.add('active');
-  }
-  
-  // Fungsi next slide
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
-  }
-  
-  // Fungsi prev slide
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlide);
-  }
-  
-  // Event listener untuk tombol next
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
-      nextSlide();
-      // Efek bounce pada tombol
-      this.style.transform = 'translateY(-50%) scale(0.9)';
-      setTimeout(() => {
-        this.style.transform = 'translateY(-50%) scale(1)';
-      }, 150);
-    });
-  }
-  
-  // Event listener untuk tombol prev
-  if (prevBtn) {
-    prevBtn.addEventListener('click', function() {
-      prevSlide();
-      // Efek bounce pada tombol
-      this.style.transform = 'translateY(-50%) scale(0.9)';
-      setTimeout(() => {
-        this.style.transform = 'translateY(-50%) scale(1)';
-      }, 150);
-    });
-  }
-  
-  // Event listener untuk dots
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', function() {
-      currentSlide = index;
-      showSlide(currentSlide);
-      // Efek scale pada dot
-      this.style.transform = 'scale(1.5)';
-      setTimeout(() => {
-        this.style.transform = 'scale(1.3)';
-      }, 200);
-    });
+  AOS.init({
+    duration: 1000,
+    once: true
   });
-  
-  // Auto slide setiap 5 detik
-  let autoSlide = setInterval(nextSlide, 5000);
-  
-  // Pause auto slide saat hover
-  const sliderContainer = document.querySelector('.cheerful-slider');
-  if (sliderContainer) {
-    sliderContainer.addEventListener('mouseenter', () => {
-      clearInterval(autoSlide);
-    });
-    
-    sliderContainer.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(nextSlide, 5000);
-    });
-  }
-  
-  // ==========================================
-  // TOUCH/SWIPE SUPPORT UNTUK MOBILE
-  // ==========================================
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const sliderTrack = document.querySelector('.slider-track-cheerful');
-  
-  if (sliderTrack) {
-    sliderTrack.addEventListener('touchstart', function(e) {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-    
-    sliderTrack.addEventListener('touchend', function(e) {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, {passive: true});
-  }
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        // Swipe left - next slide
-        nextSlide();
-      } else {
-        // Swipe right - prev slide
-        prevSlide();
-      }
-    }
-  }
-  
-  // ==========================================
-  // ANIMASI FLOATING EMOJI RANDOM
-  // ==========================================
-  const emojis = document.querySelectorAll('.floating-emoji');
-  
-  emojis.forEach((emoji, index) => {
-    // Random delay untuk setiap emoji
-    const randomDelay = Math.random() * 3;
-    emoji.style.animationDelay = `${randomDelay}s`;
-    
-    // Random duration
-    const randomDuration = 4 + Math.random() * 4;
-    emoji.style.animationDuration = `${randomDuration}s`;
-  });
-  
-  // ==========================================
-  // HOVER EFFECT PADA STAT ITEMS
-  // ==========================================
-  const statItems = document.querySelectorAll('.stat-item');
-  
-  statItems.forEach((item) => {
-    item.addEventListener('mouseenter', function() {
-      const emoji = this.querySelector('.stat-emoji');
-      if (emoji) {
-        emoji.style.animation = 'emoji-wiggle 0.5s ease-in-out infinite';
-      }
-    });
-    
-    item.addEventListener('mouseleave', function() {
-      const emoji = this.querySelector('.stat-emoji');
-      if (emoji) {
-        emoji.style.animation = 'emoji-wiggle 2s ease-in-out infinite';
-      }
-    });
-  });
-  
-  // ==========================================
-  // PARALLAX EFFECT PADA FLOATING EMOJI
-  // ==========================================
-  document.addEventListener('mousemove', function(e) {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    emojis.forEach((emoji, index) => {
-      const speed = (index + 1) * 10;
-      const x = (window.innerWidth / 2 - e.clientX) / speed;
-      const y = (window.innerHeight / 2 - e.clientY) / speed;
-      
-      emoji.style.transform = `translate(${x}px, ${y}px)`;
-    });
-  });
-  
-  // ==========================================
-  // ANIMASI SCROLL REVEAL
-  // ==========================================
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-  
-  // Observe elements
-  const aboutCard = document.querySelector('.about-main-card');
-  const aboutSlider = document.querySelector('.about-slider-cheerful');
-  const funQuote = document.querySelector('.fun-quote');
-  
-  [aboutCard, aboutSlider, funQuote].forEach((el) => {
-    if (el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'all 0.8s ease';
-      observer.observe(el);
-    }
-  });
-  
-  // ==========================================
-  // LOGO INTERAKTIF - EFEK KLIK
-  // ==========================================
-  const logoCheerful = document.querySelector('.about-logo-cheerful');
-  
-  if (logoCheerful) {
-    logoCheerful.addEventListener('click', function() {
-      // Efek spin saat diklik
-      this.style.animation = 'none';
-      setTimeout(() => {
-        this.style.animation = 'logo-spin 0.6s ease';
-      }, 10);
-      
-      // Tambahkan efek confetti sederhana
-      createMiniConfetti(this);
-    });
-  }
-  
-  // Fungsi mini confetti
-  function createMiniConfetti(element) {
-    const rect = element.getBoundingClientRect();
-    const colors = ['#F4870B', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1'];
-    
-    for (let i = 0; i < 10; i++) {
-      const confetti = document.createElement('div');
-      confetti.style.position = 'fixed';
-      confetti.style.left = rect.left + rect.width / 2 + 'px';
-      confetti.style.top = rect.top + rect.height / 2 + 'px';
-      confetti.style.width = '8px';
-      confetti.style.height = '8px';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.borderRadius = '50%';
-      confetti.style.pointerEvents = 'none';
-      confetti.style.zIndex = '9999';
-      
-      document.body.appendChild(confetti);
-      
-      // Animasi confetti
-      const angle = (Math.PI * 2 * i) / 10;
-      const velocity = 50 + Math.random() * 50;
-      const vx = Math.cos(angle) * velocity;
-      const vy = Math.sin(angle) * velocity;
-      
-      let posX = 0;
-      let posY = 0;
-      let opacity = 1;
-      
-      const animateConfetti = () => {
-        posX += vx * 0.1;
-        posY += vy * 0.1 + 2;
-        opacity -= 0.02;
-        
-        confetti.style.transform = `translate(${posX}px, ${posY}px)`;
-        confetti.style.opacity = opacity;
-        
-        if (opacity > 0) {
-          requestAnimationFrame(animateConfetti);
-        } else {
-          confetti.remove();
-        }
-      };
-      
-      requestAnimationFrame(animateConfetti);
-    }
-  }
-  
-  // Tambahkan keyframes untuk logo spin
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes logo-spin {
-      0% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.2) rotate(180deg); }
-      100% { transform: scale(1) rotate(360deg); }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  // ==========================================
-  // QUOTE BUBBLE TYPING EFFECT
-  // ==========================================
-  const quoteText = document.querySelector('.quote-bubble p');
-  
-  if (quoteText) {
-    const originalText = quoteText.textContent;
-    quoteText.textContent = '';
-    
-    let charIndex = 0;
-    const typeInterval = setInterval(() => {
-      if (charIndex < originalText.length) {
-        quoteText.textContent += originalText[charIndex];
-        charIndex++;
-      } else {
-        clearInterval(typeInterval);
-      }
-    }, 50);
-  }
-  
-  console.log('🎉 About Us Cheerful initialized successfully!');
-});
 </script>
-
-<!-- JAVASCRIPT STRUKTUR & PRES-WAPRES CHEERFUL -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // ==========================================
-  // STRUKTUR SECTION INTERACTIONS
-  // ==========================================
-  
-  // Image zoom on click
-  const strukturImage = document.querySelector('.struktur-image-cheerful');
-  if (strukturImage) {
-    strukturImage.addEventListener('click', function() {
-      this.style.transform = 'scale(1.5)';
-      this.style.transition = 'transform 0.5s ease';
-      this.style.zIndex = '1000';
-      this.style.position = 'relative';
-      
-      setTimeout(() => {
-        this.style.transform = 'scale(1)';
-        setTimeout(() => {
-          this.style.zIndex = '1';
-          this.style.position = 'static';
-        }, 500);
-      }, 2000);
-    });
-  }
-
-  // Fact bubbles random animation
-  const factBubbles = document.querySelectorAll('.fact-bubble');
-  factBubbles.forEach((bubble, index) => {
-    bubble.addEventListener('mouseenter', function() {
-      this.style.animation = 'none';
-      this.style.transform = 'scale(1.1) rotate(5deg)';
-    });
-    
-    bubble.addEventListener('mouseleave', function() {
-      this.style.transform = 'scale(1) rotate(0deg)';
-      setTimeout(() => {
-        this.style.animation = `fact-float 4s ease-in-out infinite ${index}s`;
-      }, 300);
-    });
-  });
-
-  // ==========================================
-  // PRES-WAPRES CARD INTERACTIONS
-  // ==========================================
-  
-  const leaderCards = document.querySelectorAll('.leader-card');
-  
-  leaderCards.forEach((card) => {
-    // Hover effect enhancement
-    card.addEventListener('mouseenter', function() {
-      const photoFrame = this.querySelector('.photo-frame');
-      const decorations = this.querySelectorAll('.photo-decoration');
-      
-      photoFrame.style.transform = 'scale(1.05)';
-      decorations.forEach((dec, i) => {
-        dec.style.animationDuration = '1s';
-      });
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      const photoFrame = this.querySelector('.photo-frame');
-      const decorations = this.querySelectorAll('.photo-decoration');
-      
-      photoFrame.style.transform = 'scale(1)';
-      decorations.forEach((dec) => {
-        dec.style.animationDuration = '4s';
-      });
-    });
-    
-    // Click confetti effect
-    card.addEventListener('click', function(e) {
-      if (!e.target.closest('.social-btn')) {
-        createCardConfetti(this);
-      }
-    });
-  });
-
-  // Confetti function
-  function createCardConfetti(element) {
-    const rect = element.getBoundingClientRect();
-    const colors = ['#FFD700', '#F4870B', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
-    
-    for (let i = 0; i < 20; i++) {
-      const confetti = document.createElement('div');
-      confetti.style.position = 'fixed';
-      confetti.style.left = rect.left + rect.width / 2 + 'px';
-      confetti.style.top = rect.top + rect.height / 2 + 'px';
-      confetti.style.width = '10px';
-      confetti.style.height = '10px';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-      confetti.style.pointerEvents = 'none';
-      confetti.style.zIndex = '9999';
-      
-      document.body.appendChild(confetti);
-      
-      const angle = (Math.PI * 2 * i) / 20;
-      const velocity = 80 + Math.random() * 80;
-      const vx = Math.cos(angle) * velocity;
-      const vy = Math.sin(angle) * velocity;
-      
-      let posX = 0;
-      let posY = 0;
-      let rotation = 0;
-      let opacity = 1;
-      
-      const animate = () => {
-        posX += vx * 0.15;
-        posY += vy * 0.15 + 3;
-        rotation += 10;
-        opacity -= 0.015;
-        
-        confetti.style.transform = `translate(${posX}px, ${posY}px) rotate(${rotation}deg)`;
-        confetti.style.opacity = opacity;
-        
-        if (opacity > 0) {
-          requestAnimationFrame(animate);
-        } else {
-          confetti.remove();
-        }
-      };
-      
-      requestAnimationFrame(animate);
-    }
-  }
-
-  // Social button click effect
-const socialBtns = document.querySelectorAll('.social-btn');
-
-socialBtns.forEach((btn) => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    this.style.transform = 'scale(0.8)';
-    setTimeout(() => {
-      this.style.transform = 'scale(1.1)';
-      setTimeout(() => {
-        this.style.transform = 'scale(1)';
-      }, 150);
-    }, 100);
-
-    const message = this.dataset.msg;
-    showPopup(message);
-  });
-});
-
-  // Popup function
-  function showPopup(message) {
-    const popup = document.createElement('div');
-    popup.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      font-size: 18px;
-      color: #7c3e0f;
-      font-weight: 600;
-      z-index: 10000;
-      animation: popup-in 0.3s ease;
-      border: 3px solid #F4870B;
-    `;
-    popup.textContent = message;
-    
-    document.body.appendChild(popup);
-    
-    setTimeout(() => {
-      popup.style.animation = 'popup-out 0.3s ease';
-      setTimeout(() => popup.remove(), 300);
-    }, 1500);
-  }
-
-  // Add popup animations
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes popup-in {
-      from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    @keyframes popup-out {
-      from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      to { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Scroll reveal animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  // Observe elements
-  const strukturCard = document.querySelector('.struktur-main-card');
-  const leaderCardsObserve = document.querySelectorAll('.leader-card');
-  const spiritBubble = document.querySelector('.spirit-bubble');
-
-  [strukturCard, ...leaderCardsObserve, spiritBubble].forEach((el) => {
-    if (el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(40px)';
-      el.style.transition = 'all 0.8s ease';
-      observer.observe(el);
-    }
-  });
-
-  console.log('🎉 Struktur & Pres-Wapres Cheerful loaded!');
-});
-</script>
-
-<script src="contact-cheerful.js">
-
-  // ==========================================
-// CONTACT SECTION CHEERFUL - JAVASCRIPT BARU
-// ==========================================
-
-(function() {
-  'use strict';
-
-  // Tunggu DOM siap
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactSection);
-  } else {
-    initContactSection();
-  }
-
-  function initContactSection() {
-    console.log('🎉 Initializing Contact Section Cheerful...');
-    
-    initConfetti();
-    initParallax();
-    initScrollReveal();
-    initRandomAnimations();
-    initCardInteractions();
-    
-    console.log('✅ Contact Section Cheerful ready!');
-  }
-
-  // ==========================================
-  // 1. CONFETTI EFFECT
-  // ==========================================
-  function initConfetti() {
-    const cards = document.querySelectorAll('.contact-card-cheerful');
-    
-    cards.forEach(function(card) {
-      card.addEventListener('click', function(e) {
-        // Biarkan link tetap berfungsi
-        createConfettiBurst(this);
-        
-        // Efek bounce pada card
-        const bubble = this.querySelector('.card-bubble');
-        if (bubble) {
-          bubble.style.transform = 'translateY(-25px) scale(0.97)';
-          setTimeout(function() {
-            bubble.style.transform = '';
-          }, 180);
-        }
-      });
-    });
-  }
-
-  function createConfettiBurst(element) {
-    const rect = element.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const colors = [
-      '#FF0000', '#E1306C', '#000000', 
-      '#F4870B', '#FFD700', '#FF6B6B', 
-      '#4ECDC4', '#45B7D1', '#96CEB4'
-    ];
-    
-    const shapes = ['circle', 'square', 'triangle'];
-    
-    for (let i = 0; i < 20; i++) {
-      setTimeout(function() {
-        createSingleConfetti(centerX, centerY, colors, shapes);
-      }, i * 30);
-    }
-  }
-
-  function createSingleConfetti(x, y, colors, shapes) {
-    const confetti = document.createElement('div');
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const shape = shapes[Math.floor(Math.random() * shapes.length)];
-    const size = 8 + Math.random() * 10;
-    
-    // Styling berdasarkan shape
-    let borderRadius = '50%';
-    let clipPath = 'none';
-    
-    if (shape === 'square') {
-      borderRadius = '2px';
-    } else if (shape === 'triangle') {
-      clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
-      borderRadius = '0';
-    }
-    
-    confetti.style.cssText = `
-      position: fixed;
-      left: ${x}px;
-      top: ${y}px;
-      width: ${size}px;
-      height: ${size}px;
-      background: ${color};
-      border-radius: ${borderRadius};
-      clip-path: ${clipPath};
-      pointer-events: none;
-      z-index: 10000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    `;
-    
-    document.body.appendChild(confetti);
-    
-    // Physics animation
-    const angle = Math.random() * Math.PI * 2;
-    const velocity = 80 + Math.random() * 120;
-    let vx = Math.cos(angle) * velocity;
-    let vy = Math.sin(angle) * velocity - 50; // Slight upward bias
-    let posX = 0;
-    let posY = 0;
-    let rotation = Math.random() * 360;
-    let rotationSpeed = (Math.random() - 0.5) * 20;
-    let opacity = 1;
-    let gravity = 4;
-    let drag = 0.96;
-    
-    function animate() {
-      // Update physics
-      vy += gravity * 0.15;
-      vx *= drag;
-      vy *= drag;
-      
-      posX += vx * 0.15;
-      posY += vy * 0.15;
-      rotation += rotationSpeed;
-      opacity -= 0.015;
-      
-      // Apply transforms
-      confetti.style.transform = `
-        translate(${posX}px, ${posY}px) 
-        rotate(${rotation}deg)
-      `;
-      confetti.style.opacity = opacity;
-      
-      if (opacity > 0 && posY < window.innerHeight + 100) {
-        requestAnimationFrame(animate);
-      } else {
-        confetti.remove();
-      }
-    }
-    
-    requestAnimationFrame(animate);
-  }
-
-  // ==========================================
-  // 2. PARALLAX FLOATING ELEMENTS
-  // ==========================================
-  function initParallax() {
-    const floats = document.querySelectorAll('.contact-float');
-    if (!floats.length) return;
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-    let isActive = true;
-    let rafId = null;
-    
-    // Smooth follow mouse
-    function updateParallax() {
-      if (!isActive) return;
-      
-      // Smooth interpolation
-      currentX += (mouseX - currentX) * 0.08;
-      currentY += (mouseY - currentY) * 0.08;
-      
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      
-      floats.forEach(function(float, index) {
-        const speed = (index + 1) * 12;
-        const offsetX = (centerX - currentX) / speed;
-        const offsetY = (centerY - currentY) / speed;
-        
-        // Preserve existing animation while adding parallax
-        float.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-      });
-      
-      rafId = requestAnimationFrame(updateParallax);
-    }
-    
-    // Mouse move handler
-    document.addEventListener('mousemove', function(e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    }, { passive: true });
-    
-    // Start animation
-    updateParallax();
-    
-    // Pause when tab hidden
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        isActive = false;
-        if (rafId) cancelAnimationFrame(rafId);
-      } else {
-        isActive = true;
-        updateParallax();
-      }
-    });
-  }
-
-  // ==========================================
-  // 3. SCROLL REVEAL ANIMATION
-  // ==========================================
-  function initScrollReveal() {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -100px 0px',
-      threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, index) {
-        if (entry.isIntersecting) {
-          // Staggered delay
-          setTimeout(function() {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0) scale(1)';
-            entry.target.classList.add('revealed');
-          }, index * 100);
-          
-          // Unobserve after reveal
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    
-    // Elements to reveal
-    const revealElements = document.querySelectorAll(`
-      .contact-card-cheerful,
-      .message-bubble-cheerful,
-      .contact-header-cheerful
-    `);
-    
-    revealElements.forEach(function(el) {
-      // Set initial state
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(50px) scale(0.95)';
-      el.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-      
-      observer.observe(el);
-    });
-  }
-
-  // ==========================================
-  // 4. RANDOM ANIMATION SPEEDS
-  // ==========================================
-  function initRandomAnimations() {
-    const floats = document.querySelectorAll('.contact-float');
-    
-    floats.forEach(function(float, index) {
-      // Random duration between 6-12 seconds
-      const duration = 6 + Math.random() * 6;
-      const delay = index * 0.8;
-      
-      float.style.animationDuration = duration + 's';
-      float.style.animationDelay = delay + 's';
-    });
-    
-    // Random bounce speeds for footer emojis
-    const bounceEmojis = document.querySelectorAll('.bounce-emoji');
-    bounceEmojis.forEach(function(emoji) {
-      const duration = 1.2 + Math.random() * 0.6;
-      emoji.style.animationDuration = duration + 's';
-    });
-  }
-
-  // ==========================================
-  // 5. CARD INTERACTIONS
-  // ==========================================
-  function initCardInteractions() {
-    const cards = document.querySelectorAll('.contact-card-cheerful');
-    
-    cards.forEach(function(card) {
-      const bubble = card.querySelector('.card-bubble');
-      const icon = card.querySelector('.icon-bg');
-      
-      // Hover tilt effect using mouse position
-      card.addEventListener('mousemove', function(e) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        if (bubble) {
-          bubble.style.transform = `
-            translateY(-20px) 
-            rotateX(${rotateX}deg) 
-            rotateY(${rotateY}deg)
-          `;
-        }
-      });
-      
-      // Reset on mouse leave
-      card.addEventListener('mouseleave', function() {
-        if (bubble) {
-          bubble.style.transform = '';
-        }
-      });
-      
-      // Icon pulse on hover
-      card.addEventListener('mouseenter', function() {
-        if (icon) {
-          icon.style.animation = 'icon-pulse 0.6s ease-in-out';
-          setTimeout(function() {
-            icon.style.animation = '';
-          }, 600);
-        }
-      });
-    });
-    
-    // Add keyframes for icon pulse
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes icon-pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.15); }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  // ==========================================
-  // 6. TYPING ANIMATION RESET
-  // ==========================================
-  function initTypingReset() {
-    const bubble = document.querySelector('.message-bubble-cheerful');
-    if (!bubble) return;
-    
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          // Restart typing animation
-          const dots = bubble.querySelectorAll('.bubble-typing span');
-          dots.forEach(function(dot) {
-            dot.style.animation = 'none';
-            setTimeout(function() {
-              dot.style.animation = '';
-            }, 10);
-          });
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    observer.observe(bubble);
-  }
-
-  // Call typing reset init
-  initTypingReset();
-
-})();
-
-</script>
-
 
 <!-- EVENT CARDS SWIPE FUNCTIONALITY -->
 <script>
@@ -1658,10 +714,9 @@ document.addEventListener('DOMContentLoaded', function() {
   let scrollLeft = 0;
   let isDragging = false;
 
-  // Update active dot based on scroll position
   function updateDots() {
     const scrollPosition = container.scrollLeft;
-    const cardWidth = cards[0].offsetWidth + 20; // width + gap
+    const cardWidth = cards[0].offsetWidth + 20; 
     const newIndex = Math.round(scrollPosition / cardWidth);
     
     if (newIndex !== currentIndex && newIndex >= 0 && newIndex < dots.length) {
@@ -1671,7 +726,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Click on dots to navigate
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
       const cardWidth = cards[0].offsetWidth + 20;
@@ -1682,7 +736,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Mouse/Touch drag functionality
   container.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.pageX - container.offsetLeft;
@@ -1698,111 +751,6 @@ document.addEventListener('DOMContentLoaded', function() {
   container.addEventListener('mouseup', () => {
     isDragging = false;
     container.style.cursor = 'grab';
-    // Snap to nearest card
-    const cardWidth = cards[0].offsetWidth + 20;
-    const nearestIndex = Math.round(container.scrollLeft / cardWidth);
-    container.scrollTo({
-      left: cardWidth * nearestIndex,
-      behavior: 'smooth'
-    });
-  });
-
-  container.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll-fast
-    container.scrollLeft = scrollLeft - walk;
-  });
-
-  // Touch events for mobile
-  container.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-  }, {passive: true});
-
-  container.addEventListener('touchmove', (e) => {
-    const x = e.touches[0].pageX - container.offsetLeft;
-    const walk = (x - startX) * 2;
-    container.scrollLeft = scrollLeft - walk;
-  }, {passive: true});
-
-  // Update dots on scroll
-  let scrollTimeout;
-  container.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateDots, 50);
-  });
-
-  // Auto-hide swipe hint after 5 seconds
-  setTimeout(() => {
-    const hint = document.querySelector('.swipe-hint');
-    if (hint) {
-      hint.style.opacity = '0';
-      hint.style.transition = 'opacity 0.5s ease';
-      setTimeout(() => hint.remove(), 500);
-    }
-  }, 5000);
-
-  console.log('✅ Event cards swipe initialized!');
-});
-</script>
-
-  <!-- EVENT CARDS SWIPE FUNCTIONALITY -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('eventCardsContainer');
-  const cards = container.querySelectorAll('.event-card');
-  const dots = document.querySelectorAll('.swipe-dot');
-  
-  if (!container || cards.length === 0) return;
-
-  let currentIndex = 0;
-  let startX = 0;
-  let scrollLeft = 0;
-  let isDragging = false;
-
-  // Update active dot based on scroll position
-  function updateDots() {
-    const scrollPosition = container.scrollLeft;
-    const cardWidth = cards[0].offsetWidth + 20; // width + gap approximation
-    const newIndex = Math.round(scrollPosition / cardWidth);
-    
-    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < dots.length) {
-      dots[currentIndex].classList.remove('active');
-      dots[newIndex].classList.add('active');
-      currentIndex = newIndex;
-    }
-  }
-
-  // Click on dots to navigate
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      const cardWidth = cards[0].offsetWidth + 20;
-      container.scrollTo({
-        left: cardWidth * index,
-        behavior: 'smooth'
-      });
-    });
-  });
-
-  // Mouse drag functionality
-  container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    container.style.cursor = 'grabbing';
-  });
-
-  container.addEventListener('mouseleave', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-  });
-
-  container.addEventListener('mouseup', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-    // Snap to nearest card
     const cardWidth = cards[0].offsetWidth + 20;
     const nearestIndex = Math.round(container.scrollLeft / cardWidth);
     container.scrollTo({
@@ -1819,7 +767,6 @@ document.addEventListener('DOMContentLoaded', function() {
     container.scrollLeft = scrollLeft - walk;
   });
 
-  // Touch events for mobile
   container.addEventListener('touchstart', (e) => {
     startX = e.touches[0].pageX - container.offsetLeft;
     scrollLeft = container.scrollLeft;
@@ -1831,14 +778,12 @@ document.addEventListener('DOMContentLoaded', function() {
     container.scrollLeft = scrollLeft - walk;
   }, {passive: true});
 
-  // Update dots on scroll
   let scrollTimeout;
   container.addEventListener('scroll', () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(updateDots, 50);
   });
 
-  // Auto-hide swipe hint after 5 seconds on mobile
   if (window.innerWidth <= 900) {
     setTimeout(() => {
       const hint = document.querySelector('.swipe-hint');
@@ -1849,8 +794,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }, 5000);
   }
-
-  console.log('✅ Event cards swipe initialized! GUMMIES di depan, FANTASTIC di belakang');
 });
 </script>
 
