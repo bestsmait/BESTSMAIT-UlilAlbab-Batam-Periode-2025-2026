@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liputan UAGTS - SMAIT Ulil Albab Batam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Georgia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- NAVIGASI (DIAMBIL DARI TEMPLATE KEMENAG) --- */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            display: flex; 
+            padding: 20px 40px; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(6px); 
+        }
+
+        nav img { width: 70px; }
+
+        .nav-links { flex: 1; text-align: right; }
+
+        .nav-links ul { display: flex; justify-content: flex-end; align-items: center; }
+
+        .nav-links ul li { list-style: none; padding: 8px 12px; }
+
+        .nav-links ul li a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 16px; 
+            font-weight: 500; 
+        }
+
+        .nav-links ul li::after { 
+            content: ''; 
+            display: block; 
+            width: 0%; 
+            height: 2px; 
+            background: #F4870B; 
+            margin: auto; 
+            transition: 0.5s; 
+        }
+
+        .nav-links ul li:hover::after { width: 100%; }
+
+        nav .fa { display: none; color: #fff; font-size: 22px; cursor: pointer; }
+
+        @media(max-width: 700px) {
+            .nav-links { 
+                position: absolute; 
+                background: #673E0E; 
+                height: 100vh; 
+                width: 200px; 
+                top: 0; 
+                right: -200px; 
+                transition: 0.5s; 
+                text-align: left; 
+                z-index: 2000;
+            }
+            .nav-links ul { display: block; padding: 30px; }
+            .nav-links ul li { padding: 15px 0; }
+            nav .fa { display: block; }
+            nav img { width: 40px; }
+            .fa-times {
+                color: #fff;
+                margin-bottom: 20px;
+                font-size: 22px;
+                cursor: pointer;
+            }
+        }
+
+        /* --- ARTIKEL KORAN --- */
+        .liputan {
+            max-width: 900px;
+            margin: 110px auto 60px;
+            padding: 40px;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-family: "Georgia", serif;
+        }
+
+        .liputan-content {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .sub-headline {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #F4870B;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .liputan-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 55px;
+            font-weight: 900;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 25px;
+            border-bottom: 4px double #333;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .header-image-container img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .liputan-meta {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+            margin: 25px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .liputan p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #222;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 75px;
+            line-height: 60px;
+            padding-top: 4px;
+            padding-right: 12px;
+            color: #1a1a1a;
+        }
+
+        .row-content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .text-block { flex: 1; }
+
+        .side-image { width: 40%; flex-shrink: 0; }
+
+        .gambar-container img {
+            width: 100%;
+            border: 1px solid #eee;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        .gambar-caption {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            color: #777;
+            margin-top: 8px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: #fff5e6;
+            border-left: 5px solid #F4870B;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .piala-section { text-align: center; margin: 40px 0; }
+        .piala-section img { width: 150px; }
+
+        @media (max-width: 768px) {
+            .liputan { padding: 25px; margin-top: 90px; }
+            .liputan-content h1 { font-size: 38px; }
+            .row-content { flex-direction: column; }
+            .side-image { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html#home"><img src="fotofoto/logo-best.png" alt="Logo BEST"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times fa-times-custom" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="index.html#home" onclick="hideMenu()">HOME</a></li>
+                <li><a href="index.html#about" onclick="hideMenu()">ABOUT US</a></li>
+                <li><a href="index.html#kementerian" onclick="hideMenu()">KEMENTERIAN</a></li>
+                <li><a href="index.html#event" onclick="hideMenu()">EVENT</a></li>
+                <li><a href="index.html#contact" onclick="hideMenu()">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <article class="liputan" data-aos="fade-up">
+        <div class="liputan-content">
+            <span class="sub-headline">Liputan Kegiatan</span>
+            <h1>ULIL ALBAB GOES TO SCHOOL</h1>
+            <div class="header-image-container">
+                <!-- GANTI NAMA FILE FOTO DI BAWAH INI -->
+                <img src="fotofoto/Fotbar.JPG" alt="Kunjungan UAGTS">
+                <div class="gambar-caption">Foto bersama BEST SMAIT Ulil Albab Batam dan OSIS SAMI.</div>
+            </div>
+        </div>
+
+        <div class="liputan-meta">
+            <span>Redaksi: KEMKOMINFO BEST</span>
+            <span>Batam, Kepulauan Riau</span>
+            <span>Mei 2026</span>
+        </div>
+
+        <div class="row-content">
+            <div class="text-block">
+                <p><span class="dropcap">B</span>atam – Pada hari Rabu, 12 Mei 2026, BEST (Badan Eksekutif Siswa Terpadu) SMAIT Ulil Albab Batam melakukan kunjungan studi banding di SMPIT Alam Mutiara Insani Batam. Kegiatan yang biasa disebut UAGTS (Ulil Albab Goes To School) ini merupakan proker unggulan dari KEMENDIKBUD yang diselenggarakan dua tahun sekali.</p>
+                <p>Kedatangan rombongan BEST disambut hangat oleh OSIS SAMI saat memasuki area sekolah yang asri dan ditanami berbagai macam tumbuhan. Acara kemudian dibuka oleh MC dari OSIS SAMI di hadapan siswa-siswi SMPIT Alam Mutiara Insani yang sangat antusias.</p>
+            </div>
+            <div class="side-image gambar-container">
+                <!-- GANTI NAMA FILE FOTO DI BAWAH INI -->
+                <img src="fotofoto/foto-materi-waktu.jpg" alt="Penyampaian Materi">
+                <div class="gambar-caption">Kak Namira dan Kak Zee saat membawakan materi manajemen waktu.</div>
+            </div>
+        </div>
+
+        <div class="highlight-box" data-aos="fade-right">
+            "Melalui kegiatan diskusi dan bertukar pikiran ini, sekiranya dapat membantu peningkatan kinerja bagi kedua belah pihak organisasi."
+        </div>
+
+        <p>Materi pertama mengenai manajemen waktu dibawakan oleh Kak Namira dan Kak Zee, menyoroti pentingnya membagi waktu secara efektif antara belajar, berorganisasi, dan hobi di masa remaja. Selanjutnya, Kak Ara dan Kak Fakhri memberikan materi pengenalan lingkungan SMAIT Ulil Albab Batam, mencakup program boarding, organisasi, serta berbagai komunitas.</p>
+
+        <div class="gambar-container" style="margin: 30px 0;" data-aos="zoom-in">
+            <!-- GANTI NAMA FILE FOTO DI BAWAH INI -->
+            <img src="fotofoto/noradarrel.JPG" alt="Sesi Tanya Jawab">
+            <div class="gambar-caption">Sesi tanya jawab yang dipandu oleh Kak Naura dan Kak Darrel berlangsung secara interaktif.</div>
+        </div>
+
+        <div class="row-content">
+            <div class="text-block">
+                <p>Antusiasme dan rasa penasaran peserta semakin terlihat pada sesi tanya jawab dan kuis. Meski awalnya ragu, siswa-siswi perlahan memberanikan diri untuk bertanya dan menjawab pertanyaan dari Kak Naura dan Kak Darrel. Selain itu, BEST dan OSIS SAMI juga mengadakan sesi diskusi khusus untuk saling bertukar pendapat dan pengalaman seputar keorganisasian.</p>
+                <p>Di akhir waktu kunjungan, terdapat waktu bebas yang dimanfaatkan untuk mengobrol santai bersama sesama siswa maupun ustadz/ah. Momen ini juga menjadi ajang nostalgia, mengingat beberapa anggota BEST yang hadir merupakan alumni dari SMPIT Alam Mutiara Insani.</p>
+            </div>
+            <div class="side-image gambar-container">
+                <!-- GANTI NAMA FILE FOTO DI BAWAH INI -->
+                <img src="fotofoto/foto-diskusi-osis.jpg" alt="Diskusi Organisasi">
+                <div class="gambar-caption">Suasana keakraban saat anggota BEST dan OSIS SAMI saling bertukar pikiran.</div>
+            </div>
+        </div>
+
+        <p style="border-top: 1px solid #eee; padding-top: 20px; font-style: italic; color: #555;">
+            Melalui studi banding ini, besar harapan untuk menjalin hubungan yang erat dan harmonis, serta membuka peluang kolaborasi antar sekolah untuk saling membantu di masa depan.
+        </p>
+    </article>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() { 
+            navLinks.style.right = "0"; 
+        }
+        function hideMenu() { 
+            navLinks.style.right = "-200px"; 
+        }
+    </script>
+</body>
+</html>
