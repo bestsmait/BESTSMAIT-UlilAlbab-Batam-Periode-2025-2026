@@ -4404,3 +4404,49 @@ html, body {
     font-size: 11px;
   }
 }
+
+/* ==========================================
+   WARNA & VARIATION UNTUK CARD EVENT BLUE (UAGTS)
+   ========================================== */
+
+/* Tema Warna Biru untuk Card Event ke-3 */
+.event-card.blue {
+  border-top: 5px solid #2196F3;
+}
+
+.event-card.blue .event-image span {
+  background: rgba(33, 150, 243, 0.9);
+  color: #fff;
+}
+
+.event-card.blue .event-badge {
+  background: #E3F2FD;
+  color: #1976D2;
+}
+
+.event-card.blue .event-btn {
+  background: #2196F3;
+  color: #fff;
+}
+
+.event-card.blue .event-btn:hover {
+  background: #1976D2;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
+/* Penyesuaian Lebar Wrapper Container jika Kartu Bertambah */
+@media screen and (min-width: 901px) {
+  /* Memastikan scroll horizontal / grid tetap rapi saat kartu berjumlah 3 */
+  .event-cards-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+  }
+  
+  .event-card {
+    flex: 0 0 calc(33.333% - 14px); /* Membagi layar secara presisi untuk 3 card di desktop */
+    min-width: 300px;
+  }
+}
